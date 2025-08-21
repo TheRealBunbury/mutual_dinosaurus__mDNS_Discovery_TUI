@@ -230,6 +230,7 @@ impl App {
                                 ServiceEvent::SearchStopped(service) => {
                                     tracing::trace!("Search Stopped for {service}");
                                 }
+                                _ => {}
                             }
                         }
 
@@ -305,7 +306,7 @@ impl App {
     fn run(&mut self, mut terminal: Terminal<impl Backend>) -> anyhow::Result<()> {
         loop {
             terminal.draw(|frame| {
-                frame.render_widget(self as &mut App, frame.size());
+                frame.render_widget(self as &mut App, frame.area());
             })?;
 
             if poll(Duration::from_millis(

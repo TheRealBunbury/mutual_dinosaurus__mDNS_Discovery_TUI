@@ -22,12 +22,12 @@ enum Mode {
 /// Implementing this trait for a type will make it possible
 /// for the type to be rendered as a line in the [`List`].
 pub trait ListEntry {
-    fn entry(&self) -> Line;
+    fn entry(&self) -> Line<'_>;
     fn id(&self) -> String;
 }
 
 impl<D: Display> ListEntry for D {
-    fn entry(&self) -> Line {
+    fn entry(&self) -> Line<'_> {
         Line::styled(format!("{}", self), TEXT_COLOR)
     }
 
