@@ -21,7 +21,7 @@ impl PartialEq for Info {
 }
 
 impl ListEntry for Info {
-    fn entry(&self) -> Line {
+    fn entry(&self) -> Line<'_> {
         Line::styled(format!("{}", self.info.get_hostname()), TEXT_COLOR)
     }
 
